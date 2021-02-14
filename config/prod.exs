@@ -13,8 +13,9 @@ config :showcase, ShowcaseWeb.Endpoint,
   url: [
     scheme: "https",
     host: System.get_env("RENDER_EXTERNAL_HOSTNAME") || "localhost",
-    port: 443
+    port: 80
   ],
+  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
   # server: true,
   # force_ssl: [rewrite_on: [:x_forwarded_proto]],
   check_origin: [
