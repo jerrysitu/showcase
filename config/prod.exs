@@ -19,7 +19,8 @@ config :showcase, ShowcaseWeb.Endpoint,
   # force_ssl: [rewrite_on: [:x_forwarded_proto]],
   check_origin: [
     "https://#{System.get_env("ORIGIN_URL", "")}",
-    "https://#{System.get_env("RENDER_EXTERNAL_HOSTNAME", "")}"
+    "https://#{System.get_env("RENDER_EXTERNAL_HOSTNAME", "")}",
+    "https://jerrysitu.com"
   ],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
