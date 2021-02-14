@@ -13,7 +13,7 @@ config :showcase, ShowcaseWeb.Endpoint,
   url: [
     scheme: "https",
     host: System.get_env("RENDER_EXTERNAL_HOSTNAME") || "localhost",
-    port: 80
+    port: 443
   ],
   # server: true,
   # force_ssl: [rewrite_on: [:x_forwarded_proto]],
