@@ -15,17 +15,12 @@ config :showcase, ShowcaseWeb.Endpoint,
     host: System.get_env("RENDER_EXTERNAL_HOSTNAME") || "localhost",
     port: 80
   ],
-  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
   server: true,
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   check_origin: [
-    "https://#{System.get_env("ORIGIN_URL", "")}",
     "https://#{System.get_env("RENDER_EXTERNAL_HOSTNAME", "")}",
-    "//#{System.get_env("ORIGIN_URL", "")}",
-    "https://jerrysitu.com",
-    "//jerrysitu.com"
+    "https://jerrysitu.com"
   ],
-  code_reloader: false,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
