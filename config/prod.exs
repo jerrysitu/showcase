@@ -11,6 +11,9 @@ use Mix.Config
 # before starting your production server.
 config :showcase, ShowcaseWeb.Endpoint,
   url: [host: System.get_env("RENDER_EXTERNAL_HOSTNAME") || "localhost", port: 80],
+  server: true,
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  check_origin: ["https://#{System.get_env("RENDER_EXTERNAL_HOSTNAME")}"],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
