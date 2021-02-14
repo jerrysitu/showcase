@@ -1,0 +1,137 @@
+.pill {
+  @apply px-2 py-1 border rounded-xl w-min shadow;
+}
+
+.pill-blueGray {
+  @apply text-blueGray-500 bg-blueGray-50 border-blueGray-50;
+}
+.pill-coolGray {
+  @apply text-coolGray-500 bg-coolGray-50 border-coolGray-50;
+}
+.pill-gray {
+  @apply text-gray-500 bg-gray-50 border-gray-50;
+}
+.pill-trueGray {
+  @apply text-trueGray-500 bg-trueGray-50 border-trueGray-50;
+}
+.pill-warmGray {
+  @apply text-warmGray-500 bg-warmGray-50 border-warmGray-50;
+}
+.pill-red {
+  @apply text-red-500 bg-red-50 border-red-50;
+}
+.pill-orange {
+  @apply text-orange-500 bg-orange-50 border-orange-50;
+}
+.pill-amber {
+  @apply text-amber-500 bg-amber-50 border-amber-50;
+}
+.pill-yellow {
+  @apply text-yellow-500 bg-yellow-50 border-yellow-50;
+}
+.pill-lime {
+  @apply text-lime-500 bg-lime-50 border-lime-50;
+}
+.pill-green {
+  @apply text-green-500 bg-green-50 border-green-50;
+}
+.pill-emerald {
+  @apply text-emerald-500 bg-emerald-50 border-emerald-50;
+}
+.pill-teal {
+  @apply text-teal-500 bg-teal-50 border-teal-50;
+}
+.pill-cyan {
+  @apply text-cyan-500 bg-cyan-50 border-cyan-50;
+}
+.pill-lightBlue {
+  @apply text-lightBlue-500 bg-lightBlue-50 border-lightBlue-50;
+}
+.pill-blue {
+  @apply text-blue-500 bg-blue-50 border-blue-50;
+}
+.pill-indigo {
+  @apply text-indigo-500 bg-indigo-50 border-indigo-50;
+}
+.pill-violet {
+  @apply text-violet-500 bg-violet-50 border-violet-50;
+}
+.pill-purple {
+  @apply text-purple-500 bg-purple-50 border-purple-50;
+}
+.pill-fuchsia {
+  @apply text-fuchsia-500 bg-fuchsia-50 border-fuchsia-50;
+}
+.pill-pink {
+  @apply text-pink-500 bg-pink-50 border-pink-50;
+}
+.pill-rose {
+  @apply text-rose-500 bg-rose-50 border-rose-50;
+}
+
+.pill-bg-white-blueGray {
+  @apply text-blueGray-600 bg-white border-blueGray-300;
+}
+.pill-bg-white-coolGray {
+  @apply text-coolGray-600 bg-white border-coolGray-300;
+}
+.pill-bg-white-gray {
+  @apply text-gray-600 bg-white border-gray-300;
+}
+.pill-bg-white-trueGray {
+  @apply text-trueGray-600 bg-white border-trueGray-300;
+}
+.pill-bg-white-warmGray {
+  @apply text-warmGray-600 bg-white border-warmGray-300;
+}
+.pill-bg-white-red {
+  @apply text-red-600 bg-white border-red-300;
+}
+.pill-bg-white-orange {
+  @apply text-orange-600 bg-white border-orange-300;
+}
+.pill-bg-white-amber {
+  @apply text-amber-600 bg-white border-amber-300;
+}
+.pill-bg-white-yellow {
+  @apply text-yellow-600 bg-white border-yellow-300;
+}
+.pill-bg-white-lime {
+  @apply text-lime-600 bg-white border-lime-300;
+}
+.pill-bg-white-green {
+  @apply text-green-600 bg-white border-green-300;
+}
+.pill-bg-white-emerald {
+  @apply text-emerald-600 bg-white border-emerald-300;
+}
+.pill-bg-white-teal {
+  @apply text-teal-600 bg-white border-teal-300;
+}
+.pill-bg-white-cyan {
+  @apply text-cyan-600 bg-white border-cyan-300;
+}
+.pill-bg-white-lightBlue {
+  @apply text-lightBlue-600 bg-white border-lightBlue-300;
+}
+.pill-bg-white-blue {
+  @apply text-blue-600 bg-white border-blue-300;
+}
+.pill-bg-white-indigo {
+  @apply text-indigo-600 bg-white border-indigo-300;
+}
+.pill-bg-white-violet {
+  @apply text-violet-600 bg-white border-violet-300;
+}
+.pill-bg-white-purple {
+  @apply text-purple-600 bg-white border-purple-300;
+}
+.pill-bg-white-fuchsia {
+  @apply text-fuchsia-600 bg-white border-fuchsia-300;
+}
+.pill-bg-white-pink {
+  @apply text-pink-600 bg-white border-pink-300;
+}
+.pill-bg-white-rose {
+  @apply text-rose-600 bg-white border-rose-300;
+}

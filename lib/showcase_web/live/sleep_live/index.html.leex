@@ -1,0 +1,26 @@
+<div class="w-full h-full p-4">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="flex flex-col p-8 mt-6 border-2 border-gray-400 border-opacity-50 rounded-lg bg-emerald-50 sm:flex-row">
+
+      <div class="flex-grow">
+        <p class="text-sm font-semibold leading-relaxed sm:text-xl">If you sleep now, you should wake up at..</p>
+        <div class="p-1 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+          <div class="grid gap-2 mx-auto sm:grid-cols-3 sm:max-w-screen-lg">
+            <%= for time <- @sleep_now_times do %>
+              <div class="w-full p-1 m-1 font-semibold text-center rounded-md sm:w-24 bg-emerald-500 text-emerald-50 whitespace-nowrap"><%= time %></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="inline-flex items-center justify-center mt-4 sm:mt-0">
+        <button id="sleepNow" phx-hook="sleepNow" class="min-w-full mx-auto rounded-full btn btn-emerald">Calculate</button>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>

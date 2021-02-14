@@ -1,0 +1,15 @@
+.input-field {
+  @apply border bg-blueGray-100 text-gray-700 shadow rounded-lg focus:outline-none focus:ring focus:ring-lightBlue-300 focus:border-transparent;
+}
+
+.select-field {
+  @apply cursor-pointer border bg-blueGray-100 shadow rounded-lg p-2 text-gray-700 focus:outline-none focus:ring focus:ring-lightBlue-300 focus:border-transparent;
+}
+
+.checkbox {
+  @apply h-4 w-4 rounded border-gray-300 focus:border-lightBlue-300 focus:ring-2 focus:ring-lightBlue-200 text-lightBlue-500;
+}
+
+.textarea {
+  @apply bg-blueGray-100 border-opacity-50 border rounded-lg shadow focus:outline-none focus:ring focus:ring-lightBlue-300 focus:border-transparent;
+}

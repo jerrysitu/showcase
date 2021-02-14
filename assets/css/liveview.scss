@@ -1,0 +1,25 @@
+.alert:empty {
+  @apply hidden;
+}
+
+.alert.toast {
+  @apply z-40 fixed top-0 right-0 w-64 mt-20 shadow-xl cursor-pointer text-base p-2 ease-out duration-300;
+}
+
+/* LiveView specific classes for your customizations */
+.phx-no-feedback.invalid-feedback,
+.phx-no-feedback .invalid-feedback {
+  display: none;
+}
+
+.phx-click-loading {
+  opacity: 0.5;
+  transition: opacity 1s ease-out;
+}
+
+.phx-disconnected {
+  cursor: wait;
+}
+.phx-disconnected * {
+  pointer-events: none;
+}

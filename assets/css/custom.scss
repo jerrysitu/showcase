@@ -1,0 +1,36 @@
+/* css overrides */
+.ajs-message.ajs-custom {
+  color: #fff;
+  background-color: #059669;
+  font-weight: 600;
+  z-index: 50;
+  border-radius: 8px;
+}
+
+.alert {
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.alert-danger {
+  background-color: red;
+  color: white;
+}
+
+.alert-info {
+  background-color: green;
+  color: white;
+}
+
+[hidden] {
+  @apply hidden;
+}
+
+.hideScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.examphideScrollle {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
