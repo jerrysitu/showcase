@@ -21,7 +21,7 @@ config :showcase, ShowcaseWeb.Endpoint,
   check_origin: [
     "https://#{System.get_env("ORIGIN_URL", "")}",
     "https://#{System.get_env("RENDER_EXTERNAL_HOSTNAME", "")}",
-    "//#{System.get_env("ORIGIN_URL", "")}"
+    "//#{System.get_env("ORIGIN_URL", "")}",
     "https://jerrysitu.com",
     "//jerrysitu.com"
   ],
