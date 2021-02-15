@@ -15,8 +15,8 @@ config :showcase, ShowcaseWeb.Endpoint,
     host: System.get_env("ORIGIN_HOSTNAME") || "localhost",
     port: 80
   ],
-  server: true,
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  # server: true,
+  # force_ssl: [rewrite_on: [:x_forwarded_proto]],
   # check_origin: [
   #   "https://#{System.get_env("RENDER_EXTERNAL_HOSTNAME", "")}",
   #   "https://jerrysitu.com"
