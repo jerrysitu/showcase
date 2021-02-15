@@ -12,15 +12,15 @@ use Mix.Config
 config :showcase, ShowcaseWeb.Endpoint,
   url: [
     scheme: "https",
-    host: System.get_env("RENDER_EXTERNAL_HOSTNAME") || "localhost",
+    host: System.get_env("ORIGIN_HOSTNAME") || "localhost",
     port: 80
   ],
   server: true,
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  check_origin: [
-    "https://#{System.get_env("RENDER_EXTERNAL_HOSTNAME", "")}",
-    "https://jerrysitu.com"
-  ],
+  # check_origin: [
+  #   "https://#{System.get_env("RENDER_EXTERNAL_HOSTNAME", "")}",
+  #   "https://jerrysitu.com"
+  # ],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
