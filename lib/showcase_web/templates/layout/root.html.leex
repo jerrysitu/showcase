@@ -11,7 +11,7 @@
   <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
 </head>
 
-<body class="antialiased bg-darkGreen">
+<body class="flex flex-col h-full mx-auto overflow-y-scroll max-w-7xl bg-darkGreen text-blueGray-800">
   <header class="relative z-50 flex items-center w-full h-16 text-blueGray-100">
     <a href="<%= Routes.page_path(@conn, :index) %>" class="ml-4 text-2xl font-extrabold hover:text-blueGray-300">Jerry
       Situ</a>

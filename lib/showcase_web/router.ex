@@ -20,6 +20,7 @@ defmodule ShowcaseWeb.Router do
     live("/", PageLive, :index)
 
     live("/sleep", SleepLive.Index, :index)
+    live("/password", PasswordLive.Index, :index)
   end
 
   # Other scopes may use custom stacks.
