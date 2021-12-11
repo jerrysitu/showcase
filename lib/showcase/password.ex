@@ -19,7 +19,7 @@ defmodule Showcase.Password do
   2. should include numbers?
   3. should include special characters?
 
-  iex> Showcase.Password.generate(8, false, true)
+  iex> PasswordGenerator.Password.generate(8, false, true)
   {:ok, "28tst7fF"}
   """
 
