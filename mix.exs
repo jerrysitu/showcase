@@ -60,7 +60,7 @@ defmodule Showcase.MixProject do
       setup: ["deps.get", "cmd npm install --prefix assets"],
       "assets.deploy": [
         "cmd --cd assets npm run deploy",
-        "esbuild default --minify --loader:.png=file",
+        "esbuild default --minify",
         "phx.digest"
       ]
     ]
