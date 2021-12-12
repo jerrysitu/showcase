@@ -36,22 +36,22 @@ defmodule ShowcaseWeb.PasswordGeneratorLive.PasswordModuleComponent do
     ~H"""
     <div class="p-4 mt-6 border-2 border-blue-500 rounded-lg bg-blue-50">
       <div class="">
-        <%= text_input :password, :input_field, id: "copy-password-#{@module_id}", class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md", value: @password, readonly: true %>
+        <%= text_input :password, :input_field, id: "copy-password-#{@module_id}", class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md text-sm", value: @password, readonly: true %>
         <div phx-hook="copyPasswordToClipboard" id={"copy-btn-#{@module_id}"} data-module-id={@module_id} type="button" class="mt-2 cursor-pointer inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
           Copy Password
         </div>
       </div>
 
-      <form phx-change="change-password-input" phx-target={@myself} phx-submit="generate-new-password" id={@module_id}>
+      <form phx-change="change-password-input" phx-target={@myself} phx-submit="generate-new-password" id={@module_id} phx-auto-recover="ignore">
 
 
-        <div class="grid w-full grid-cols-2 gap-x-4">
+        <div class="grid w-full lg:grid-cols-2 lg:gap-x-4">
           <div class="flex flex-col mt-2 text-sm">
 
             <div class="flex flex-col mt-3 space-y-2">
               <div class="text-sm">Password Length</div>
               <div class="flex items-center space-x-4">
-                <%= text_input :password, :length_input, id: "text-input-#{@module_id}", value: @length, phx_debounce: 0, min: 6, max: 64, class: "w-16 shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+                <%= number_input :password, :length_input, id: "text-input-#{@module_id}", value: @length, phx_debounce: 0, min: 6, max: 64, class: "w-16 shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
                 <%= range_input :password, :length_range, id: "range-input-#{@module_id}", class: "w-full cursor-pointer bg-blue-300 overflow-hidden rounded-lg appearance-none", value: @length, phx_debounce: 0, min: 6, max: 64 %>
               </div>
               <label class="flex items-center font-normal cursor-pointer group">
