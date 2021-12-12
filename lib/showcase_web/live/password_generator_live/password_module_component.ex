@@ -46,7 +46,7 @@ defmodule ShowcaseWeb.PasswordGeneratorLive.PasswordModuleComponent do
       </div>
 
       <div class="flex items-baseline space-x-3">
-        <div phx-hook="copyPasswordToClipboard" id={"copy-btn-#{@module_id}"} data-module-id={@module_id} type="button" class="mt-2 cursor-pointer inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        <div phx-update="ignore" phx-hook="copyPasswordToClipboard" id={"copy-btn-#{@module_id}"} data-module-id={@module_id} type="button" class="mt-2 cursor-pointer inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
           Copy Password
         </div>
         <div class="flex items-baseline ml-4 h-min"  x-data={"{ showCopied: #{@show_copied_url_button} }"}>
