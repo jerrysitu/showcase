@@ -17,4 +17,18 @@ defmodule ShowcaseWeb.PasswordGeneratorLive do
 
     {:noreply, socket |> assign(password_modules: password_modules)}
   end
+
+  @impl true
+  def handle_info(
+        {:hide_copied_url_button, %{id: password_module_id}},
+        socket
+      ) do
+    send_update_after(
+      PasswordModuleComponent,
+      [id: "#{password_module_id}", show_copied_url_button: false],
+      1500
+    )
+
+    {:noreply, socket}
+  end
 end

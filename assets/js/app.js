@@ -21,7 +21,7 @@ Hooks.copyPasswordToClipboard = {
       document.execCommand("copy");
 
       // Notify user password copied
-      // this.pushEvent("copied-password");
+      this.pushEventTo(this.el, "copied-password");
     });
   },
 };

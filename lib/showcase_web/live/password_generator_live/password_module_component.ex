@@ -13,6 +13,7 @@ defmodule ShowcaseWeb.PasswordGeneratorLive.PasswordModuleComponent do
       |> assign(include_number?: include_number?)
       |> assign(include_special_symbol?: include_special_symbol?)
       |> assign(length: pw_length)
+      |> assign(show_copied_url_button: false)
 
     if connected?(socket) do
       {:ok, password} = Password.generate(pw_length, include_number?, include_special_symbol?)
@@ -31,14 +32,30 @@ defmodule ShowcaseWeb.PasswordGeneratorLive.PasswordModuleComponent do
     end
   end
 
+  # @impl true
+  # def update(assigns, socket) do
+  #   {:ok, socket |> assign(show_copied_url_button: assigns.show_copied_url_button)}
+  # end
+
   @impl true
   def render(assigns) do
     ~H"""
     <div class="p-4 mt-6 border-2 border-blue-500 rounded-lg bg-blue-50">
       <div class="">
         <%= text_input :password, :input_field, id: "copy-password-#{@module_id}", class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md text-sm", value: @password, readonly: true %>
+      </div>
+
+      <div class="flex items-baseline space-x-3">
         <div phx-hook="copyPasswordToClipboard" id={"copy-btn-#{@module_id}"} data-module-id={@module_id} type="button" class="mt-2 cursor-pointer inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
           Copy Password
+        </div>
+        <div class="flex items-baseline ml-4 h-min"  x-data={"{ showCopied: #{@show_copied_url_button} }"}>
+          <div x-show="showCopied" phx-update="ignore" x-transition:enter="transition transform duration-300"
+            x-transition:enter-start="opacity-0 scale-50" x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="transition transform duration-300" x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-0" class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 shadow">
+            Copied
+          </div>
         </div>
       </div>
 
@@ -51,7 +68,7 @@ defmodule ShowcaseWeb.PasswordGeneratorLive.PasswordModuleComponent do
             <div class="flex flex-col mt-3 space-y-2">
               <div class="text-sm">Password Length</div>
               <div class="flex items-center space-x-4">
-                <%= number_input :password, :length_input, id: "text-input-#{@module_id}", value: @length, phx_debounce: 0, min: 6, max: 64, class: "w-16 shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+                <%= number_input :password, :length_input, id: "text-input-#{@module_id}", value: @length, min: 6, max: 64, class: "w-16 shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
                 <%= range_input :password, :length_range, id: "range-input-#{@module_id}", class: "w-full cursor-pointer bg-blue-300 overflow-hidden rounded-lg appearance-none", value: @length, phx_debounce: 0, min: 6, max: 64 %>
               </div>
               <label class="flex items-center font-normal cursor-pointer group">
@@ -83,6 +100,12 @@ defmodule ShowcaseWeb.PasswordGeneratorLive.PasswordModuleComponent do
   end
 
   @impl true
+  def handle_event("copied-password", _, socket) do
+    send(self(), {:hide_copied_url_button, %{id: socket.assigns.id}})
+
+    {:noreply, socket |> assign(show_copied_url_button: true)}
+  end
+
   def handle_event(
         "change-password-input",
         %{
