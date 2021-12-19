@@ -12,7 +12,7 @@
   </script>
 </head>
 
-<body class="flex flex-col h-full mx-auto overflow-y-scroll text-gray-700 space-y-28 max-w-7xl bg-slate-100" x-data="{ showBar: true }">
+<body class="flex flex-col h-full mx-auto overflow-y-scroll text-gray-700 space-y-28 max-w-7xl bg-slate-50" x-data="{ showBar: true }">
   <header class="fixed top-0 left-0 right-0 z-30 transition bg-white shadow"
     @scroll.window="showBar = (window.pageYOffset > 40) ? false : true" x-show="showBar"
     x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="opacity-0 -translate-y-2"
@@ -24,6 +24,7 @@
           <%= link "Jerry Situ", to: Routes.page_path(@conn, :index), title: "Athlon Home Page", class: "py-5 text-md lg:text-3xl text-black no-underline font-semibold ml-4 hidden lg:block lg:ml-0" %>
           <%= link "Home", to: Routes.page_path(@conn, :index), class: "py-6 text-xs lg:text-lg no-underline border-b-4  #{if Phoenix.Controller.current_path(@conn) == Routes.page_path(@conn, :index), do: "border-blue-500 text-gray-900 font-medium", else: "text-gray-500 border-white hover:text-blue-600"}" %>
           <%= link "Password Generator", to: Routes.password_generator_path(@conn, :index), class: "py-6 text-xs lg:text-lg no-underline border-b-4  #{if Phoenix.Controller.current_path(@conn) == Routes.password_generator_path(@conn, :index), do: "border-blue-500 text-gray-900 font-medium", else: "text-gray-500 border-white hover:text-blue-600"}" %>
+          <%= link "User Lookup", to: Routes.user_lookup_path(@conn, :user_lookup), class: "py-6 text-xs lg:text-lg no-underline border-b-4  #{if Phoenix.Controller.current_path(@conn) == Routes.user_lookup_path(@conn, :user_lookup), do: "border-blue-500 text-gray-900 font-medium", else: "text-gray-500 border-white hover:text-blue-600"}" %>
         </div>
       </div>
     </nav>
