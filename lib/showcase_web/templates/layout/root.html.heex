@@ -24,7 +24,32 @@
           <%= link "Jerry Situ", to: Routes.page_path(@conn, :index), title: "Athlon Home Page", class: "py-5 text-md lg:text-3xl text-black no-underline font-semibold ml-4 hidden lg:block lg:ml-0" %>
           <%= link "Home", to: Routes.page_path(@conn, :index), class: "py-6 text-xs lg:text-lg no-underline border-b-4  #{if Phoenix.Controller.current_path(@conn) == Routes.page_path(@conn, :index), do: "border-blue-500 text-gray-900 font-medium", else: "text-gray-500 border-white hover:text-blue-600"}" %>
           <%= link "Password Generator", to: Routes.password_generator_path(@conn, :index), class: "py-6 text-xs lg:text-lg no-underline border-b-4  #{if Phoenix.Controller.current_path(@conn) == Routes.password_generator_path(@conn, :index), do: "border-blue-500 text-gray-900 font-medium", else: "text-gray-500 border-white hover:text-blue-600"}" %>
-          <%= link "User Lookup", to: Routes.user_lookup_path(@conn, :user_lookup), class: "py-6 text-xs lg:text-lg no-underline border-b-4  #{if Phoenix.Controller.current_path(@conn) == Routes.user_lookup_path(@conn, :user_lookup), do: "border-blue-500 text-gray-900 font-medium", else: "text-gray-500 border-white hover:text-blue-600"}" %>
+          <div class="relative" x-data="{ open: false }">
+            <div class="">
+              <div class={"flex items-center space-x-2 border-b-4 cursor-pointer font-medium 
+                          #{if Enum.any?([Routes.rest_user_lookup_path(@conn, :rest_user_lookup), Routes.graph_ql_user_lookup_path(@conn, :graphql_user_lookup)], fn path -> path == Phoenix.Controller.current_path(@conn) end), 
+                          do: "border-blue-500 text-gray-900", else: "text-gray-500 border-white hover:text-blue-600"}"}
+                   x-on:click="open = ! open"
+              >
+                <div class="py-6 text-xs no-underline lg:text-lg">
+                  User Lookup
+                </div>
+                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+              <div class="absolute p-2 mt-1 bg-white rounded-md" x-show="open" @click.away="open = false">
+                <div class="flex flex-col p-1 space-y-2">
+                  <%= link "REST User Lookup", 
+                      to: Routes.rest_user_lookup_path(@conn, :rest_user_lookup), 
+                      class: "text-xs p-2 lg:text-base no-underline whitespace-nowrap rounded-md  #{if Phoenix.Controller.current_path(@conn) == Routes.rest_user_lookup_path(@conn, :rest_user_lookup), do: "border-blue-500 text-blue-600 pointer-events-none", else: "text-gray-500 hover:text-blue-600 hover:bg-blue-50"}" 
+                  %>
+                  <%= link "GraphQL User Lookup", 
+                      to: Routes.graph_ql_user_lookup_path(@conn, :graphql_user_lookup), 
+                      class: "text-xs p-2 lg:text-base no-underline whitespace-nowrap rounded-md  #{if Phoenix.Controller.current_path(@conn) == Routes.graph_ql_user_lookup_path(@conn, :graphql_user_lookup), do: "border-blue-500 text-blue-600 pointer-events-none", else: "text-gray-500 hover:text-blue-600 hover:bg-blue-50"}" 
+                  %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </nav>

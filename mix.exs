@@ -47,7 +47,8 @@ defmodule Showcase.MixProject do
       {:timex, "~> 3.7"},
       {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
       {:exconstructor, "~> 1.2.4"},
-      {:tesla, "~> 1.4.4"}
+      {:tesla, "~> 1.4.4"},
+      {:recase, "~> 0.7.0"}
     ]
   end
 

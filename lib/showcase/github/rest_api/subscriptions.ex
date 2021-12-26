@@ -1,11 +1,11 @@
 defmodule Showcase.Github.Api.Subscriptions do
   alias Showcase.Github.Api.Shared
 
-  defstruct([
+  defstruct [
     :name,
     :description,
     :html_url
-  ])
+  ]
 
   use ExConstructor
 

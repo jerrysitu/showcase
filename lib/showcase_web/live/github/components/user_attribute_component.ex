@@ -1,4 +1,4 @@
-defmodule ShowcaseWeb.UserLookupLive.UserAttributeComponent do
+defmodule ShowcaseWeb.Components.UserAttributeComponent do
   use Phoenix.Component
 
   def maybe_user_render_attribute(assigns) do

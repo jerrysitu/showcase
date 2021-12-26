@@ -1,0 +1,78 @@
+<div class="max-w-2xl px-2 mx-auto">
+  <div class="text-4xl font-semibold text-center">Github Lookup (REST API)</div>
+
+
+  <div class="mt-6 rounded-lg">
+    <div class="">
+      Look up a user in Github and return their watched repos. 
+    </div>
+    <form phx-submit="submit-search" phx-auto-recover="ignore">
+      <div class="grid w-full md:grid-cols-2 md:gap-x-4">
+        <div class="flex flex-col mt-6 text-sm">
+          <div class="flex flex-col space-y-1">
+            <div class="text-xs">Github Username</div>
+            <div class="flex space-x-3">
+              <%= text_input :github, :username, value: @username, required: true, data_lpignore: true, autocomplete: "off", class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+              <button type="submit"
+                class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <%= if @user do %>
+    <div class="pb-5 mt-4">
+      <div class="flex p-6 space-x-4 border-2 border-blue-400 rounded-md shadow">
+        <div class="flex flex-col w-full">
+          <div class="text-xl font-semibold"><%= @user.name %></div>
+          <div class="flex space-x-2">
+            <div class=""><%= @user.login %></div>
+            <a class="" href={@user.html_url} target="_blank" aria-label="Github">
+              <svg class="w-5 h-5 text-gray-800 fill-current hover:text-yellow-600" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512">
+                <path
+                  d="M256 32C132.3 32 32 134.9 32 261.7c0 101.5 64.2 187.5 153.2 217.9 1.4.3 2.6.4 3.8.4 8.3 0 11.5-6.1 11.5-11.4 0-5.5-.2-19.9-.3-39.1-8.4 1.9-15.9 2.7-22.6 2.7-43.1 0-52.9-33.5-52.9-33.5-10.2-26.5-24.9-33.6-24.9-33.6-19.5-13.7-.1-14.1 1.4-14.1h.1c22.5 2 34.3 23.8 34.3 23.8 11.2 19.6 26.2 25.1 39.6 25.1 10.5 0 20-3.4 25.6-6 2-14.8 7.8-24.9 14.2-30.7-49.7-5.8-102-25.5-102-113.5 0-25.1 8.7-45.6 23-61.6-2.3-5.8-10-29.2 2.2-60.8 0 0 1.6-.5 5-.5 8.1 0 26.4 3.1 56.6 24.1 17.9-5.1 37-7.6 56.1-7.7 19 .1 38.2 2.6 56.1 7.7 30.2-21 48.5-24.1 56.6-24.1 3.4 0 5 .5 5 .5 12.2 31.6 4.5 55 2.2 60.8 14.3 16.1 23 36.6 23 61.6 0 88.2-52.4 107.6-102.3 113.3 8 7.1 15.2 21.1 15.2 42.5 0 30.7-.3 55.5-.3 63 0 5.4 3.1 11.5 11.4 11.5 1.2 0 2.6-.1 4-.4C415.9 449.2 480 363.1 480 261.7 480 134.9 379.7 32 256 32z" />
+              </svg>
+            </a>
+          </div>
+          <div class="mt-2">
+            <UserAttributeComponent.maybe_user_render_attribute user={@user} field={:company} />
+            <UserAttributeComponent.maybe_user_render_attribute user={@user} field={:blog} />
+            <UserAttributeComponent.maybe_user_render_attribute user={@user} field={:location} />
+            <UserAttributeComponent.maybe_user_render_attribute user={@user} field={:twitter} />
+            <UserAttributeComponent.maybe_user_render_attribute user={@user} field={:bio} />
+          </div>
+        </div>
+        <img class="object-contain h-32 rounded-md"src={@user.avatar_url} />
+    </div>
+
+     <%= if length(@user_subscriptions) > 0 do %>
+        <div class="w-full mt-4">
+          <div class="text-xl font-semibold">Watching</div>
+          <div class="flex mt-2 space-x-2 text-xs">
+            <PaginationComponent.render_pagination_link pages={@pages} username={@username} socket={@socket} key={:first} label={"First"} />
+            <PaginationComponent.render_pagination_link pages={@pages} username={@username} socket={@socket} key={:prev} label={"Previous"} />
+            <PaginationComponent.render_pagination_link pages={@pages} username={@username} socket={@socket} key={:next} label={"Next"} />
+            <PaginationComponent.render_pagination_link pages={@pages} username={@username} socket={@socket} key={:last} label={"Last"} />
+          </div>
+          
+          <div class="flex flex-col mt-2 space-y-2">
+            <%= for subscription <- @user_subscriptions do %>
+              <div class="p-2 rounded-md shadow bg-blue-50">
+                <div class="flex items-baseline space-x-2">
+                  <div class="font-medium"><%= subscription |> Map.get(:name) %></div>
+                  <a href={subscription |> Map.get(:html_url)} target="_blank" class="text-sm text-blue-600 underline">Repo</a>
+                </div>
+                <div class="text-sm text-gray-600"><%= subscription |> Map.get(:description) %></div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+  </div>
+</div>

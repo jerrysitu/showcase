@@ -21,7 +21,8 @@ defmodule ShowcaseWeb.Router do
 
     live("/sleep", SleepLive.Index, :index)
     live("/password_gen", PasswordGeneratorLive, :index)
-    live("/user_lookup", UserLookupLive, :user_lookup)
+    live "/rest_lookup", RESTUserLookupLive, :rest_user_lookup
+    live "/graphql_lookup", GraphQLUserLookupLive, :graphql_user_lookup
   end
 
   # Other scopes may use custom stacks.

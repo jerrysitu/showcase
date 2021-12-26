@@ -1,7 +1,8 @@
-defmodule ShowcaseWeb.UserLookupLive do
+defmodule ShowcaseWeb.RESTUserLookupLive do
   use ShowcaseWeb, :live_view
   alias Showcase.Github.Api.{User, Subscriptions}
-  alias ShowcaseWeb.UserLookupLive.{UserAttributeComponent, PaginationComponent}
+  alias ShowcaseWeb.Components.UserAttributeComponent
+  alias ShowcaseWeb.RESTUserLookupLive.PaginationComponent
 
   @impl true
   def mount(_params, _session, socket) do
@@ -109,7 +110,7 @@ defmodule ShowcaseWeb.UserLookupLive do
      socket
      |> push_patch(
        to:
-         Routes.user_lookup_path(socket, :user_lookup, %{
+         Routes.rest_user_lookup_path(socket, :rest_user_lookup, %{
            "username" => username |> String.trim()
          })
      )}

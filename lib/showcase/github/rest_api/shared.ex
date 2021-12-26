@@ -18,7 +18,8 @@ defmodule Showcase.Github.Api.Shared do
         {:error,
          %{
            status: 401,
-           message: "Credentials are missing or we dont have access. Please contact an admin."
+           message:
+             "Credentials might be missing, expired, or we dont have access. Please contact an admin."
          }}
 
       {:ok, response} ->
