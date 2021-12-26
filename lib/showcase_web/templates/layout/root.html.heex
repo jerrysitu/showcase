@@ -36,7 +36,7 @@
                 </div>
                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </div>
-              <div class="absolute p-2 mt-1 bg-white rounded-md" x-show="open" @click.away="open = false">
+              <div class="absolute p-2 mt-1 bg-white rounded-md" x-show="open" @click.away="open = false" x-cloak>
                 <div class="flex flex-col p-1 space-y-2">
                   <%= link "REST User Lookup", 
                       to: Routes.rest_user_lookup_path(@conn, :rest_user_lookup), 
