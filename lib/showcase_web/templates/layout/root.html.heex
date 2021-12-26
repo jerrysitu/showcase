@@ -26,9 +26,9 @@
           <%= link "Password Generator", to: Routes.password_generator_path(@conn, :index), class: "py-6 text-xs lg:text-lg no-underline border-b-4  #{if Phoenix.Controller.current_path(@conn) == Routes.password_generator_path(@conn, :index), do: "border-blue-500 text-gray-900 font-medium", else: "text-gray-500 border-white hover:text-blue-600"}" %>
           <div class="relative" x-data="{ open: false }">
             <div class="">
-              <div class={"flex items-center space-x-2 border-b-4 cursor-pointer font-medium 
+              <div class={"flex items-center space-x-2 border-b-4 cursor-pointer 
                           #{if Enum.any?([Routes.rest_user_lookup_path(@conn, :rest_user_lookup), Routes.graph_ql_user_lookup_path(@conn, :graphql_user_lookup)], fn path -> path == Phoenix.Controller.current_path(@conn) end), 
-                          do: "border-blue-500 text-gray-900", else: "text-gray-500 border-white hover:text-blue-600"}"}
+                          do: "border-blue-500 text-gray-900 font-medium", else: "text-gray-500 border-white hover:text-blue-600"}"}
                    x-on:click="open = ! open"
               >
                 <div class="py-6 text-xs no-underline lg:text-lg">
