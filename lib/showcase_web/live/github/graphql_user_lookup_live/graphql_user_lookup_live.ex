@@ -45,9 +45,7 @@ defmodule ShowcaseWeb.GraphQLUserLookupLive do
       {
         :noreply,
         socket
-        |> assign(
-          user: get_in(user.body, ["data", "user"]) |> User.new() |> IO.inspect(label: "userrrr")
-        )
+        |> assign(user: get_in(user.body, ["data", "user"]) |> User.new())
         |> assign(username: username)
         |> assign(user_subscriptions: user_subscriptions)
         |> assign(pagination_info: pagination_info)
