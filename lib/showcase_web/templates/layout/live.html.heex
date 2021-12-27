@@ -1,5 +1,5 @@
-<main role="main" class="">
-  <p class="alert alert-info" phx-click="lv:clear-flash" phx-value-key="info"><%= live_flash(@flash, :info) %></p>
-  <p class="alert alert-danger" phx-click="lv:clear-flash" phx-value-key="error"><%= live_flash(@flash, :error) %></p>
+<main role="main" class="px-2">
+  <p class="text-xs alert alert-info lg:text-base" phx-click="lv:clear-flash" phx-value-key="info"><%= live_flash(@flash, :info) %></p>
+  <p class="text-xs alert alert-danger lg:text-base" phx-click="lv:clear-flash" phx-value-key="error"><%= live_flash(@flash, :error) %></p>
   <%= @inner_content %>
 </main>
