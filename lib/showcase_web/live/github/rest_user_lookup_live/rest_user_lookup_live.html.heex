@@ -1,9 +1,9 @@
 <div class="max-w-2xl px-2 mx-auto">
-  <div class="text-4xl font-semibold text-center">Github Lookup (REST API)</div>
+  <div class="text-lg font-semibold text-center lg:text-4xl">Github Lookup (REST API)</div>
 
 
   <div class="mt-6 rounded-lg">
-    <div class="">
+    <div class="text-sm">
       Look up a user in Github and return their watched repos. 
     </div>
     <form phx-submit="submit-search" phx-auto-recover="ignore">
@@ -25,7 +25,7 @@
 
     <%= if @user do %>
     <div class="pb-5 mt-4">
-      <div class="flex p-6 space-x-4 border-2 border-blue-400 rounded-md shadow">
+      <div class="flex p-3 space-x-4 border-2 border-blue-400 rounded-md shadow lg:p-6">
         <div class="flex flex-col w-full">
           <div class="text-xl font-semibold"><%= @user.name %></div>
           <div class="flex space-x-2">
@@ -46,7 +46,7 @@
             <UserAttributeComponent.maybe_user_render_attribute user={@user} field={:bio} />
           </div>
         </div>
-        <img class="object-contain h-32 rounded-md"src={@user.avatar_url} />
+        <img class="hidden object-contain h-32 rounded-md lg:block"src={@user.avatar_url} />
     </div>
 
      <%= if length(@user_subscriptions) > 0 do %>
