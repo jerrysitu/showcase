@@ -12,9 +12,10 @@ defmodule Showcase.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Showcase.PubSub},
       # Start the Endpoint (http/https)
-      ShowcaseWeb.Endpoint
+      ShowcaseWeb.Endpoint,
       # Start a worker by calling: Showcase.Worker.start_link(arg)
       # {Showcase.Worker, arg}
+      Showcase.Presence
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -15,10 +15,10 @@ defmodule Showcase.GraphQLAPI.Shared do
               avatarUrl
               location
               twitterUsername
-              bioHTML
               url
               name
               login
+              websiteUrl
               watching(#{parse_pagination(position, cursor)}) {
                 totalCount
                 edges {

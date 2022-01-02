@@ -1,0 +1,83 @@
+<div class="max-w-5xl p-1 mx-auto lg:p-4">
+  <div class="text-2xl">Chit Chat</div>
+  <div class="max-w-2xl text-xs text-gray-500">
+    <p>This feature uses the Phoenix PubSub and Presence modules. The messages are only stored in memory, so if you close this tab, the messages are lost. If you have no one to talk to, open another tab and speak to yourself.</p>
+  </div>
+  <%= link "Open another tab", to: Routes.chit_chat_path(@socket, :chitchat), target: "_blank", class: "flex w-min whitespace-nowrap items-center px-2 py-2 mt-2 text-xs font-medium text-center text-white bg-blue-600 border border-transparent rounded-md shadow-sm lg:text-xs lg:px-2 lg:py-1 h-min hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+
+  <%= if @username do %>
+    <div class="grid w-full grid-cols-6 mt-4 space-x-4">
+      <div class="flex flex-col w-full col-span-6 lg:col-span-4">
+        <form phx-submit="send-message" phx-auto-recover="ignore" class="flex w-full" phx-hook="clearInput" id="chat-message-form">
+          <%= text_input :chat, :message, id: "chat-message-input", required: true, autocomplete: "off", class: "shadow-sm w-full focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+          <button type="submit"
+            class="inline-flex justify-center px-4 py-2 ml-3 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            Send
+          </button>
+        </form>
+        <div class="flex flex-col mt-4 space-y-2 text-xs">
+        <%= for message_payload <- @messages do %>
+          <%= if message_payload.type == :message_sent do %>
+            <%= if message_payload.sender_socket_id == @socket.id do %>    
+              <div class="flex flex-col self-end max-w-xs px-4 py-2 rounded-lg rounded-br-none bg-gradient-to-r from-sky-500 to-blue-600">
+                <span class="text-sm break-words text-indigo-50"><%= message_payload.message %></span>
+                <span class="self-end text-[0.6rem] text-indigo-50"><%= message_payload.datetime |> Normalizer.to_datestring_hour_min_am(@user_timezone) %></span>
+              </div>
+            <% else %>
+                <div class="flex flex-col self-start max-w-xs">
+                  <div class="flex flex-col px-4 py-2 bg-gray-300 rounded-lg rounded-bl-none">
+                    <span class="text-sm text-gray-800 break-words"><%= message_payload.message %></span>
+                    <span class="text-[0.6rem] text-gray-800"><%= message_payload.datetime |> Normalizer.to_datestring_hour_min_am(@user_timezone) %></span>
+                  </div>
+                  <div class="text-xs text-gray-500"><%= message_payload.sender_username %></div>
+                </div>
+            <% end %>
+          <% else %>  
+            <%= if message_payload.type == :joined do %>
+              <div class="flex space-x-1 text-sm">
+                <div class="text-green-500"><%= message_payload.datetime |> Normalizer.to_datestring_hour_min_am(@user_timezone) %></div>
+                <div class=""><%= "#{message_payload.username} has joined the chat." %></div>
+              </div>
+            <% else %>
+              <div class="flex space-x-1 text-sm">
+                <div class="text-gray-500"><%= message_payload.datetime |> Normalizer.to_datestring_hour_min_am(@user_timezone) %></div>
+                <div class=""><%= "#{message_payload.username} has left the chat." %></div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+      <div class="hidden w-full col-span-2 p-4 space-y-2 bg-white rounded-lg shadow lg:flex lg:flex-col h-min">
+        <div class="flex space-x-1">
+          <div class="">Online:</div>
+          <div class="font-semibold"><%= @online_count %></div>
+        </div>
+        <div class="flex flex-col space-y-1">
+          <%= for %{username: username} <- @online_users do %>
+          <div class="break-words"><%= username %></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  <% else %>
+    <div class="max-w-3xl mt-4">
+      <%= if connected?(@socket) do %>
+      <div class="flex space-x-2">
+        <div class="">Currently online:</div>
+        <div class=""><%= @online_count %></div>
+      </div>
+      <% end %>
+
+      <form phx-submit="set-username" phx-auto-recover="ignore" class="mt-6">
+        <div class="text-xs">Username</div>
+        <%= text_input :user, :name, required: true, autocomplete: "off", placeholder: "Set your username", class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+        <button type="submit"
+          class="flex items-center px-2 py-2 mt-2 text-xs font-medium text-center text-white bg-blue-600 border border-transparent rounded-md shadow-sm lg:text-sm lg:px-4 lg:py-2 h-min hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+          Enter Chat Room
+        </button>
+      </form>
+    </div>
+  <% end %>
+</div>

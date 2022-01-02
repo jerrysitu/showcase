@@ -26,12 +26,21 @@ Hooks.copyPasswordToClipboard = {
   },
 };
 
+Hooks.clearInput = {
+  updated() {
+    this.el.querySelector("#chat-message-input").value = "";
+  },
+};
+
 let csrfToken = document
   .querySelector("meta[name='csrf-token']")
   .getAttribute("content");
 let liveSocket = new LiveSocket("/live", Socket, {
   hooks: Hooks,
-  params: { _csrf_token: csrfToken },
+  params: {
+    _csrf_token: csrfToken,
+    timezone: -new Date().getTimezoneOffset() / 60,
+  },
   dom: {
     onBeforeElUpdated(from, to) {
       if (from._x_dataStack) {
@@ -54,3 +63,27 @@ liveSocket.connect();
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket;
+
+export default function sendTimezoneToServer() {
+  const timezone = -(new Date().getTimezoneOffset() / 60);
+  let csrfToken = document
+    .querySelector("meta[name='csrf-token']")
+    .getAttribute("content");
+
+  if (typeof window.localStorage != "undefined") {
+    try {
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/session/set-timezone", true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.setRequestHeader("x-csrf-token", csrfToken);
+      xhr.onreadystatechange = function () {
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+          localStorage["timezone"] = timezone.toString();
+        }
+      };
+      xhr.send(`{"timezone": ${timezone}}`);
+    } catch (e) {}
+  }
+}
+
+sendTimezoneToServer();

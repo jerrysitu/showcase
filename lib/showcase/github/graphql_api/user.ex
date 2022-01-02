@@ -11,7 +11,8 @@ defmodule Showcase.GraphQLAPI.User do
     :url,
     :blog,
     :name,
-    :login
+    :login,
+    :website_url
   ]
 
   use ExConstructor

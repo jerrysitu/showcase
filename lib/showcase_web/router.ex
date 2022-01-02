@@ -19,10 +19,12 @@ defmodule ShowcaseWeb.Router do
 
     live("/", PageLive, :index)
 
-    live("/sleep", SleepLive.Index, :index)
-    live("/password_gen", PasswordGeneratorLive, :index)
+    live "/sleep", SleepLive.Index, :index
+    live "/password_gen", PasswordGeneratorLive, :index
     live "/rest_lookup", RESTUserLookupLive, :rest_user_lookup
     live "/graphql_lookup", GraphQLUserLookupLive, :graphql_user_lookup
+    live "/chitchat", ChitChatLive, :chitchat
+    post "/session/set-timezone", SessionSetTimeZoneController, :set_session_timezone
   end
 
   # Other scopes may use custom stacks.
