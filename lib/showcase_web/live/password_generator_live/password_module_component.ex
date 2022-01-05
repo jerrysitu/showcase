@@ -40,13 +40,13 @@ defmodule ShowcaseWeb.PasswordGeneratorLive.PasswordModuleComponent do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="p-4 mt-6 border-2 border-blue-500 rounded-lg bg-blue-50">
+    <div class="p-4 mt-6 rounded-lg nm-flat-slate-100-lg">
       <div class="">
         <%= text_input :password, :input_field, id: "copy-password-#{@module_id}", class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md text-sm", value: @password, readonly: true %>
       </div>
 
       <div class="flex items-baseline space-x-3">
-        <div phx-update="ignore" phx-hook="copyPasswordToClipboard" id={"copy-btn-#{@module_id}"} data-module-id={@module_id} type="button" class="mt-2 cursor-pointer inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        <div phx-update="ignore" phx-hook="copyPasswordToClipboard" id={"copy-btn-#{@module_id}"} data-module-id={@module_id} type="button" class="mt-2 cursor-pointer inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
           Copy Password
         </div>
         <div class="flex items-baseline ml-4 h-min"  x-data={"{ showCopied: #{@show_copied_url_button} }"}>
@@ -87,7 +87,7 @@ defmodule ShowcaseWeb.PasswordGeneratorLive.PasswordModuleComponent do
 
           <div class="place-self-end">
             <button type="submit"
-              class="flex items-center px-2 py-2 mt-4 text-xs font-medium text-center text-white bg-blue-600 border border-transparent rounded-md shadow-sm lg:text-base lg:px-6 lg:py-3 h-min hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Generate
+              class="flex items-center px-2 py-2 mt-4 text-xs font-medium text-center text-white bg-blue-600 border border-transparent rounded-md shadow-sm lg:text-base lg:px-4 lg:py-2 h-min hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Generate
               New Password
             </button>
           </div>

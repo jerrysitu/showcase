@@ -25,7 +25,7 @@
 
     <%= if @user do %>
     <div class="pb-5 mt-4">
-      <div class="flex p-3 space-x-4 border-2 border-blue-400 rounded-md shadow lg:p-6">
+      <div class="flex p-3 space-x-4 rounded-md shadow lg:p-6 nm-flat-slate-100">
         <div class="flex flex-col w-full">
           <div class="text-xl font-semibold"><%= @user.name %></div>
           <div class="flex space-x-2">
@@ -54,7 +54,7 @@
      <%= if length(@user_subscriptions) > 0 do %>
         <div class="w-full mt-4">
           <div class="text-xl font-semibold">Watching</div>
-          <div class="flex mt-2 space-x-2 text-xs">
+          <div class="flex mt-2 space-x-2 text-sm">
             <%= live_patch "First", 
                 to: Routes.graph_ql_user_lookup_path(@socket, :graphql_user_lookup, %{"username" => @username, "position" => "first", "cursor" => ""}), 
                 class: "#{if @pagination_info.has_previous_page == false, do: "text-gray-400 pointer-events-none", else: "text-blue-500 underline"}" 
@@ -73,9 +73,9 @@
             %>
           </div>
           
-          <div class="flex flex-col mt-2 space-y-2">
+          <div class="flex flex-col mt-2 space-y-4">
             <%= for subscription <- @user_subscriptions do %>
-              <div class="p-2 rounded-md shadow bg-blue-50">
+              <div class="p-2 rounded-md shadow nm-flat-slate-100-sm">
                 <div class="flex items-baseline space-x-2">
                   <div class="font-medium"><%= subscription |> Map.get(:name) %></div>
                   <a href={subscription |> Map.get(:url)} target="_blank" class="text-sm text-blue-600 underline">Repo</a>
