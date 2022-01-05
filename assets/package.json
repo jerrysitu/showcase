@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "deploy": "NODE_ENV=production postcss css/app.css -o ../priv/static/assets/app.css"
+    "deploy": "NODE_ENV=production postcss css/app.css -o ../priv/static/assets/app.css && cd .. && mix assets.deploy && rm -f _build/esbuild"
   },
   "devDependencies": {
     "tailwindcss-neumorphism": "^0.1.0",
