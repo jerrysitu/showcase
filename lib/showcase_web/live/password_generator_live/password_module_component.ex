@@ -68,17 +68,17 @@ defmodule ShowcaseWeb.PasswordGeneratorLive.PasswordModuleComponent do
             <div class="flex flex-col mt-3 space-y-2">
               <div class="text-sm">Password Length</div>
               <div class="flex items-center space-x-4">
-                <%= number_input :password, :length_input, id: "text-input-#{@module_id}", value: @length, min: 6, max: 64, class: "w-16 shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+                <%= number_input :password, :length_input, id: "text-input-#{@module_id}", value: @length, min: 6, max: 64, class: "w-16 shadow-sm focus:ring-blue-500 focus:border-blue-500 text-xs block w-full sm:text-sm border-gray-300 rounded-md" %>
                 <%= range_input :password, :length_range, id: "range-input-#{@module_id}", class: "w-full cursor-pointer bg-blue-300 overflow-hidden rounded-lg appearance-none", value: @length, phx_debounce: 0, min: 6, max: 64 %>
               </div>
               <label class="flex items-center font-normal cursor-pointer group">
                 <%= checkbox(:password, :include_number?, value: @include_number?, id: "checkbox-num-input-#{@module_id}", class: "group-hover:border-2 group-hover:border-blue-500 focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded") %>
-                <span class="ml-2 select-none group-hover:text-gray-700">Includes Numbers?</span>
+                <span class="ml-2 text-sm select-none group-hover:text-gray-700 lg:text-base">Includes Numbers?</span>
               </label>
 
               <label class="flex items-center font-normal cursor-pointer group">
                 <%= checkbox(:password, :include_special_symbol?, value: @include_special_symbol?, id: "checkbox-symbol-input-#{@module_id}", class: "group-hover:border-2 group-hover:border-blue-500 focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded") %>
-                <span class="ml-2 select-none group-hover:text-gray-700">Includes Special Symbols?</span>
+                <span class="ml-2 text-sm select-none group-hover:text-gray-700 lg:text-base">Includes Special Symbols?</span>
               </label>
             </div>
 
