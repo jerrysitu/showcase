@@ -60,7 +60,7 @@ defmodule Showcase.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "cmd npm install --prefix assets"],
+      setup: ["deps.get", "cmd --cd assets npm install"],
       "assets.deploy": [
         "cmd --cd assets npm run deploy",
         "esbuild default --minify",
