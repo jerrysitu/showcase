@@ -3,6 +3,7 @@
     "deploy": "NODE_ENV=production postcss css/app.css -o ../priv/static/assets/app.css"
   },
   "devDependencies": {
+    "tailwindcss-neumorphism": "^0.1.0",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.0",
     "autoprefixer": "^10.4.0",
@@ -14,7 +15,6 @@
   "dependencies": {
     "alpinejs": "^3.5.1",
     "babel-preset-es2016": "^6.24.1",
-    "tailwindcss-neumorphism": "^0.1.0",
     "topbar": "^1.0.1"
   }
 }
