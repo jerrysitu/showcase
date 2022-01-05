@@ -12,7 +12,7 @@
   </script>
 </head>
 
-<body class="flex flex-col h-full mx-auto overflow-y-scroll text-gray-700 space-y-28 max-w-7xl bg-slate-100" x-data="{ showBar: true }">
+<body class="flex flex-col h-full mx-auto overflow-y-scroll text-gray-700 bg-slate-100 space-y-28 max-w-7xl" x-data="{ showBar: true }">
   <header class="fixed top-0 left-0 right-0 z-30 transition bg-white shadow"
     @scroll.window="showBar = (window.pageYOffset > 40) ? false : true" x-show="showBar"
     x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="opacity-0 -translate-y-2"
