@@ -3,11 +3,32 @@ import { Socket } from "phoenix";
 import { LiveSocket } from "phoenix_live_view";
 import topbar from "topbar";
 import Alpine from "alpinejs";
+import alertify from "alertifyjs";
 
 window.Alpine = Alpine;
 Alpine.start();
 
 let Hooks = {};
+
+Hooks.alertify_info = {
+  mounted() {
+    const alertifyInfo = ({ message }) => {
+      alertify.set("notifier", "position", "top-right");
+      alertify.notify(message, "custom-success");
+    };
+    this.handleEvent("alertify_info", alertifyInfo);
+  },
+};
+
+Hooks.alertify_error = {
+  mounted() {
+    const alertifyError = ({ message }) => {
+      alertify.set("notifier", "position", "top-right");
+      alertify.notify(message, "custom-error");
+    };
+    this.handleEvent("alertify_error", alertifyError);
+  },
+};
 
 Hooks.copyPasswordToClipboard = {
   mounted() {

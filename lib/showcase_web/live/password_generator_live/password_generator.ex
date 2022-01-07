@@ -15,7 +15,12 @@ defmodule ShowcaseWeb.PasswordGeneratorLive do
 
     password_modules = [next_module_id | password_modules]
 
-    {:noreply, socket |> assign(password_modules: password_modules)}
+    {
+      :noreply,
+      socket
+      |> assign(password_modules: password_modules)
+      |> push_event("alertify_info", %{message: "Module Added"})
+    }
   end
 
   @impl true

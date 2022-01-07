@@ -1,5 +1,8 @@
 <main role="main" class="px-2">
   <p class="text-xs alert alert-info lg:text-base" phx-click="lv:clear-flash" phx-value-key="info"><%= live_flash(@flash, :info) %></p>
   <p class="text-xs alert alert-danger lg:text-base" phx-click="lv:clear-flash" phx-value-key="error"><%= live_flash(@flash, :error) %></p>
+
+  <div phx-update="ignore" phx-hook="alertify_info" id="alertify_info" x-cloak></div>
+  <div phx-update="ignore" phx-hook="alertify_error" id="alertify_error" x-cloak></div>
   <%= @inner_content %>
 </main>

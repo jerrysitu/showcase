@@ -1509,6 +1509,22 @@ select {
   margin: -1rem 0 2rem;
 }
 
+.ajs-message.ajs-custom-success {
+  color: #fff;
+  background-color: #059669;
+  font-weight: 600;
+  z-index: 50;
+  border-radius: 8px;
+}
+
+.ajs-message.ajs-custom-error {
+  color: #fff;
+  background-color: #960505;
+  font-weight: 600;
+  z-index: 50;
+  border-radius: 8px;
+}
+
 .hover\:bg-blue-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));

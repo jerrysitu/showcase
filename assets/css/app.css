@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "../node_modules/alertifyjs/build/css/alertify.min.css";
+
 /* For Phoenix Live reload script */
 [hidden] {
   display: none;
@@ -104,4 +106,20 @@
   color: #a94442;
   display: block;
   margin: -1rem 0 2rem;
+}
+
+.ajs-message.ajs-custom-success {
+  color: #fff;
+  background-color: #059669;
+  font-weight: 600;
+  z-index: 50;
+  border-radius: 8px;
+}
+
+.ajs-message.ajs-custom-error {
+  color: #fff;
+  background-color: #960505;
+  font-weight: 600;
+  z-index: 50;
+  border-radius: 8px;
 }
