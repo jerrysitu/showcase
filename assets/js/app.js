@@ -1,9 +1,9 @@
 import "phoenix_html";
 import { Socket } from "phoenix";
 import { LiveSocket } from "phoenix_live_view";
+import alertify from "alertifyjs";
 import topbar from "topbar";
 import Alpine from "alpinejs";
-import alertify from "alertifyjs";
 
 window.Alpine = Alpine;
 Alpine.start();
