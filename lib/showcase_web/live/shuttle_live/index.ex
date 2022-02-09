@@ -13,7 +13,7 @@ defmodule ShowcaseWeb.RoverLive do
      socket
      |> assign(current_position: {0, 0})
      |> assign(grid: grid)
-     |> assign(events: ["Rover Started."])}
+     |> assign(events: [%{message: "Rover Started", type: :success}])}
   end
 
   @impl true
@@ -26,13 +26,13 @@ defmodule ShowcaseWeb.RoverLive do
         {:noreply,
          socket
          |> assign(current_position: new_position)
-         |> assign(events: [message | socket.assigns.events])}
+         |> assign(events: [%{message: message, type: :success} | socket.assigns.events])}
 
       {:error, message} ->
         {
           :noreply,
           socket
-          |> assign(events: [message | socket.assigns.events])
+          |> assign(events: [%{message: message, type: :failure} | socket.assigns.events])
         }
     end
   end
