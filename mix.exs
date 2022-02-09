@@ -48,7 +48,8 @@ defmodule Showcase.MixProject do
       {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
       {:exconstructor, "~> 1.2.4"},
       {:tesla, "~> 1.4.4"},
-      {:recase, "~> 0.7.0"}
+      {:recase, "~> 0.7.0"},
+      {:exsync, "~> 0.2.4", only: :dev}
     ]
   end
 
