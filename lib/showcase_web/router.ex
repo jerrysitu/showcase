@@ -25,6 +25,7 @@ defmodule ShowcaseWeb.Router do
     live "/graphql_lookup", GraphQLUserLookupLive, :graphql_user_lookup
     live "/chitchat", ChitChatLive, :chitchat
     live "/rover", RoverLive, :rover
+    live "/shuttle", ShuttleLive, :shuttle
     post "/session/set-timezone", SessionSetTimeZoneController, :set_session_timezone
   end
 

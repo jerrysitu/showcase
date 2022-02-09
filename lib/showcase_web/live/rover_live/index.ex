@@ -1,4 +1,4 @@
-defmodule ShowcaseWeb.RoverLive do
+defmodule ShowcaseWeb.ShuttleLive do
   use ShowcaseWeb, :live_view
 
   @impl true
@@ -48,18 +48,20 @@ defmodule ShowcaseWeb.RoverLive do
       |> Enum.find(fn {row, _row_index} ->
         current_position in row
       end)
-
-    row_with_indexes =
-      current_row
-      |> Enum.with_index()
+      |> IO.inspect(label: "current_row!!!")
 
     {_current_position, current_position_index} =
-      row_with_indexes
+      current_row
+      |> Enum.with_index()
       |> Enum.find(fn {spot, _spot_index} ->
         spot == current_position
       end)
 
-    new_row_index = determine_new_row_index(current_row_index, direction)
+    new_row_index =
+      determine_new_row_index(current_row_index, direction)
+      |> IO.inspect(label: "new row indexxx")
+
+    # maybe_find_new_position(grid_with_index, new_row_index, current_position, direction)
 
     if new_row_index in 0..3 do
       {new_row, _new_row_index} = Enum.at(grid_with_index, new_row_index)
@@ -100,19 +102,15 @@ defmodule ShowcaseWeb.RoverLive do
   end
 
   defp maybe_find_new_position(row_with_indexes, new_position_index, current_position, direction) do
-    allowed_positions =
+    {new_position, new_position_index} =
       row_with_indexes
-      |> Enum.map(fn {position, _index} ->
-        position
-      end)
-
-    {new_position, _new_position_index} =
-      row_with_indexes
+      |> IO.inspect(label: "row witn indexxesss")
       |> Enum.find({nil, nil}, fn {_position, index} ->
         index == new_position_index
       end)
+      |> IO.inspect(label: "new position new row indexxx")
 
-    if new_position in allowed_positions do
+    if new_position_index in 0..3 do
       {:ok,
        %{
          new_position: new_position,

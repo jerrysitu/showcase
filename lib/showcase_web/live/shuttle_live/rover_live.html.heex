@@ -1,0 +1,34 @@
+<div class="text-2xl font-bold">Rover</div>
+<div class="">Move the rover by pressing the buttons below or using the arrow keys</div>
+
+<div class="flex flex-col items-center p-2 mt-10 border-2 border-blue-500 rounded w-min">
+  <%= for row <- @grid do %>
+    <div class="flex space-x-2">
+    <%= for {x, y} <- row do %>
+      <div class={"w-8 h-8 text-xl text-center #{if @current_position == {x, y}, do: "bg-green-400"}"}><%= "#{x},#{y}" %></div>
+    <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="mt-4">
+  <div class="flex">
+    <div class="w-16 h-16"></div>
+    <div class="w-16 h-16 p-2 text-center border border-blue-400 rounded-lg cursor-pointer select-none" phx-click="move" phx-value-direction="north" phx-window-keydown="move" phx-key="ArrowUp">North</div>
+    <div class="w-16 h-16"></div>
+  </div>
+  <div class="flex items-center">
+    <div class="w-16 h-16 p-2 text-center border border-blue-400 rounded-lg cursor-pointer select-none" phx-click="move" phx-value-direction="west" phx-window-keydown="move" phx-key="ArrowLeft">West</div>
+    <div class="w-16 h-16 p-2 text-center border border-blue-400 rounded-lg cursor-pointer select-none" phx-click="move" phx-value-direction="south" phx-window-keydown="move" phx-key="ArrowDown">South</div>
+    <div class="w-16 h-16 p-2 text-center border border-blue-400 rounded-lg cursor-pointer select-none" phx-click="move" phx-value-direction="east" phx-window-keydown="move" phx-key="ArrowRight">East</div>
+  </div>
+</div>
+
+<div class="mt-4">
+  <div class="text-lg font-semibold">Events</div>
+  <div class="flex flex-col max-w-2xl overflow-y-auto border-2 border-blue-400 rounded max-h-48">
+  <%= for event <- @events do %>
+    <div class=""><%= event %></div>
+  <% end %>
+  </div>
+</div>
