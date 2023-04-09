@@ -5,7 +5,7 @@ defmodule Showcase.MixProject do
     [
       app: :showcase,
       version: "0.1.0",
-      elixir: "~> 1.12.2",
+      elixir: "~> 1.14.1",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -49,7 +49,8 @@ defmodule Showcase.MixProject do
       {:exconstructor, "~> 1.2.4"},
       {:tesla, "~> 1.4.4"},
       {:recase, "~> 0.7.0"},
-      {:exsync, "~> 0.2.4", only: :dev}
+      {:exsync, "~> 0.2.4", only: :dev},
+      {:elixir_uuid, "~> 1.2"}
     ]
   end
 

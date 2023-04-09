@@ -26,6 +26,7 @@ defmodule ShowcaseWeb.Router do
     live "/chitchat", ChitChatLive, :chitchat
     live "/rover", RoverLive, :rover
     live "/shuttle", ShuttleLive, :shuttle
+    live "/poker", PokerLive, :poker
     post "/session/set-timezone", SessionSetTimeZoneController, :set_session_timezone
   end
 

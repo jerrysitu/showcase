@@ -1,0 +1,71 @@
+<div class="max-w-2xl px-2 mx-auto">
+  <div class="text-2xl font-semibold text-center lg:text-4xl">Planning Poker</div>
+
+  <div class="mt-6 rounded-lg">
+    <form class={if @username == "", do: "block", else: "hidden"} phx-submit="join" phx-auto-recover="ignore">
+      <div class="grid w-full md:grid-cols-2 md:gap-x-4">
+        <div class="flex flex-col mt-6 text-sm">
+          <div class="flex flex-col space-y-1">
+            <div class="text-lg">Name</div>
+            <div class="flex space-x-3">
+              <%= text_input :user, :name, value: @username, required: true, data_lpignore: true, autocomplete: "off", class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-xs lg:text-sm border-gray-300 rounded-md" %>
+              <button type="submit"
+                class="inline-flex items-center px-3 py-2 text-xs font-medium leading-4 text-white bg-blue-600 border border-transparent rounded-md shadow-sm lg:text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                Join
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <form class="hidden" phx-change="change-description" phx-auto-recover="ignore">
+      <div class="grid w-full md:grid-cols-2 md:gap-x-4">
+        <div class="flex flex-col mt-6 text-sm">
+          <div class="flex flex-col space-y-1">
+            <div class="text-lg">Description</div>
+            <div class="flex space-x-3">
+              <%= text_input :poker, :description, value: @description, required: true, data_lpignore: true, autocomplete: "off", class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-xs lg:text-sm border-gray-300 rounded-md" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class={"#{unless @username == "", do: "block", else: "hidden"} mt-4"}>
+      <div class="flex gap-x-2">
+        <%= for {key, value} <- @possible_points do %>
+          <span phx-click="change-points" phx-value-points={value} class="cursor-pointer inline-flex items-center rounded-full bg-blue-100 px-3 py-0.5 text-sm font-medium text-blue-800 border hover:border-blue-400"><%= key %></span>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="w-full col-span-2 p-4 mt-4 space-y-2 bg-white rounded-lg shadow lg:flex lg:flex-col h-min">
+      <div class="flex justify-between">
+        <div class="flex space-x-1">
+          <div class="">Participants:</div>
+          <div class="font-semibold"><%= @online_count %></div>
+        </div>
+        <div class="">
+          <button phx-click="clear-points"
+            class={"#{unless @username == "", do: "flex", else: "hidden"} items-center p-1.5 text-xs font-medium text-center text-white bg-blue-600 border border-transparent rounded-md shadow-sm lg:text-sm lg:px-2 lg:py-1 h-min hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"}>
+            Clear All Points
+          </button>
+        </div>
+      </div>
+      <div class="flex flex-col space-y-1">
+        <%= for %{username: username, points: points} <- @participants do %>
+          <div class="flex space-x-3">
+            
+            <%= if points > 0 do %>
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <% end %>
+
+            <div class=""><%= username %></div>
+            <div class="text-green-700"><%= points %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
